@@ -1,0 +1,41 @@
+{% extends 'share/base.html' %}
+
+{% block content %}
+<body>
+  <style>
+    .btn {
+      float:right;
+    }
+  </style>
+
+  <a href="{% url 'share_files:upload' %}" class="btn btn-success btn-sm">Compartir archivo</a>
+  <h6>Archivos compartidos:</h6>
+  
+  <table class="table mb-0 table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Nombre del archivo</th>
+        <th scope="col">Compartido por</th>
+        <th scope="col">Descargar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts %}
+        <tr>
+          <td>{{ post.posted_at|date:'M d, Y H:i' }}</td>
+          <td>{{ post.nombre_del_archivo }}</td>
+          <td>{{ post.compartido_por }}</td>
+          
+          <td>
+            <a href="{{ post.archivo.url }}" class="btn btn-primary btn-sm">Descargar archivo</a>
+          </td>
+        </tr>
+      {% empty %}
+        <li>Aún no hay archivos disponibles!!!</li>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+    
+{% endblock content %}

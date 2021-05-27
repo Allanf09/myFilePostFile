@@ -1,0 +1,34 @@
+{% extends 'share/base.html' %}
+
+{% block content %}
+    <body>
+        {% if searched %}
+            <table class="table mb-0 table-striped table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Nombre del archivo</th>
+                    <th scope="col">Compartido por</th>
+                    <th scope="col">Descargar</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                        <tr>
+                            <td>{{ post.posted_at|date:'M d, Y H:i' }}</td>
+                            <td>{{ post.nombre_del_archivo }}</td>
+                            <td>{{ post.compartido_por }}</td>
+                            <td>
+                            <a href="{{ post.archivo.url }}" class="btn btn-primary btn-sm">Descargar archivo</a>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        No hay resulatdos...
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </body>
+{% endblock content %}
