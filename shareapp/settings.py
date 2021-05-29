@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -144,5 +145,7 @@ import django_heroku
 django_heroku.settings(locals())
 
 
-bool(os.environ.get('DEBUG', ''))
-DEBUG = os.environ.get('DEBUG', False)
+if os.environ.get('DEBUG') == 'True':
+    DEBUG = True
+elif os.environ.get('DEBUG') == 'False':
+    DEBUG = False
