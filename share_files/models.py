@@ -11,6 +11,3 @@ class Post(models.Model):
     def __str__(self):
         return self.nombre_del_archivo + '/' + self.compartido_por
     
-    def delete(self, *args, **kwargs):
-        self.archivo.delete()
-        super().delete(*args, **kwargs)
