@@ -143,5 +143,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import django_heroku
 django_heroku.settings(locals())
 
-
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+if os.environ.get('DEBUG') == 'True':
+    DEBUG = False
+elif os.environ.get('DEBUG') == 'False':
+    DEBUG = True
