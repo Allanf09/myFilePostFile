@@ -29,7 +29,13 @@
           <td>{{ post.compartido_por }}</td>
           
           <td>
-            <a href="{{ post.archivo.url }}" class="btn btn-primary btn-sm">Descargar archivo</a>
+            <div class="container">
+              <div class="row">
+                <div class="col text-center">
+                  <a href="{{ post.archivo.url }}" class="btn btn-primary btn-sm">Descargar archivo</a>
+                </div>
+              </div>
+            </div>
           </td>
           <td>
             <form method="post" action="{% url 'share_files:delete_file' post.id %}">
