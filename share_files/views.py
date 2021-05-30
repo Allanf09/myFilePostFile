@@ -31,6 +31,12 @@ def upload(request):
             
     return render(request, 'share/upload.html', {'form': form})
 
+def delete_file(request, pk):
+    if request.method == 'POST':
+        post = Post.objects.get(id=pk)
+        post.delete()
+        return redirect('share_files:post_list')
+
 
 
 
